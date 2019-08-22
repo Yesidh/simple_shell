@@ -19,32 +19,35 @@ Our simple shell program produce output according to a format as described below
                                                                                 
 ## Examples                                                                     
                                                                                 
+Example 1:                                                                      
+                                                                                
 simpleshell$ /bin/ls                                                            
 file1	     file2    file3    file4     file5     file6    file7    file8      
 file1.c	     file2.c  file3.c  file4.c   file5.c   file6.c  file7.c  file8.c    
 simpleshell$                                                                    
                                                                                 
 Example 2:                                                                      
+                                                                                
 simpleshell$ /bin/ls -l                                                         
 total 132                                                                       
--rwxrwxr-x 1 yesid yesid  8558 ago 15 14:23 file1                               
--rwxrwxr-x 1 yesid yesid   208 ago 15 14:29 file1.c                             
--rwxrwxr-x 1 yesid yesid  8665 ago 17 16:00 file2                               
--rw-rw-r-- 1 yesid yesid   328 ago 16 09:22 file2.c                             
--rwxrwxr-x 1 yesid yesid  8764 ago 16 10:12 file3                               
--rwxrwxr-x 1 yesid yesid  8715 ago 16 10:23 file3.c                             
--rw-rw-r-- 1 yesid yesid   507 ago 16 10:23 fork4                               
--rw-rw-r-- 1 yesid yesid   377 ago 16 10:12 file4.c                             
--rwxrwxr-x 1 yesid yesid  8774 ago 15 15:49 file5                               
--rw-rw-r-- 1 yesid yesid   422 ago 15 15:48 file5.c                             
--rwxrwxr-x 1 yesid yesid  8718 ago 16 14:27 file6                               
--rw-rw-r-- 1 yesid yesid   357 ago 16 14:27 file6.c                             
--rwxrwxr-x 1 yesid yesid  8669 ago 15 11:26 file7                               
--rw-rw-r-- 1 yesid yesid   252 ago 15 11:26 file7.c                             
--rw-rw-r-- 1 yesid yesid    32 ago 17 13:49 file8                               
--rwxrwxr-x 1 yesid yesid 16889 ago 20 22:53 file8.c                             
--rwxrwxr-x 1 yesid yesid  2699 ago 20 23:35 file9                               
--rwxrwxr-x 1 yesid yesid  2737 ago 20 22:53 file9.c                             
+-rwxrwxr-x  1 yesid yesid  8558 ago 15 14:23 file1                               
+-rwxrwxr-x  1 yesid yesid   208 ago 15 14:29 file1.c                             
+-rwxrwxr-x  1 yesid yesid  8665 ago 17 16:00 file2                               
+-rw-rw-r--  1 yesid yesid   328 ago 16 09:22 file2.c                             
+-rwxrwxr-x  1 yesid yesid  8764 ago 16 10:12 file3                               
+-rwxrwxr-x  1 yesid yesid  8715 ago 16 10:23 file3.c                             
+-rw-rw-r--  1 yesid yesid   507 ago 16 10:23 fork4                               
+-rw-rw-r--  1 yesid yesid   377 ago 16 10:12 file4.c                             
+-rwxrwxr-x  1 yesid yesid  8774 ago 15 15:49 file5                               
+-rw-rw-r--  1 yesid yesid   422 ago 15 15:48 file5.c                             
+-rwxrwxr-x  1 yesid yesid  8718 ago 16 14:27 file6                               
+-rw-rw-r--  1 yesid yesid   357 ago 16 14:27 file6.c                             
+-rwxrwxr-x  1 yesid yesid  8669 ago 15 11:26 file7                               
+-rw-rw-r--  1 yesid yesid   252 ago 15 11:26 file7.c                             
+-rw-rw-r--  1 yesid yesid    32 ago 17 13:49 file8                               
+-rwxrwxr-x  1 yesid yesid 16889 ago 20 22:53 file8.c                             
+-rwxrwxr-x  1 yesid yesid  2699 ago 20 23:35 file9                               
+-rwxrwxr-x  1 yesid yesid  2737 ago 20 22:53 file9.c                             
 simpleshell$                                                                    
 ## Prerequisites
 
