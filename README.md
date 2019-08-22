@@ -33,7 +33,7 @@ total 132
 -rwxrwxr-x 1 yesid yesid  8558 ago 15 14:23 file1                               
 -rwxrwxr-x 1 yesid yesid   208 ago 15 14:29 file1.c                             
 -rwxrwxr-x 1 yesid yesid  8665 ago 17 16:00 file2                               
--rw-rw-r--  1 yesid yesid   328 ago 16 09:22 file2.c                             
+-rw-rw-r--   1 yesid yesid   328 ago 16 09:22 file2.c                             
 -rwxrwxr-x 1 yesid yesid  8764 ago 16 10:12 file3                               
 -rwxrwxr-x 1 yesid yesid  8715 ago 16 10:23 file3.c                             
 -rw-rw-r--  1 yesid yesid   507 ago 16 10:23 fork4                               
