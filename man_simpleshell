@@ -1,0 +1,58 @@
+.TH simple_shell "21 Aug 2019" "Holberton School V0.0" "User Commands"
+.SH NAME
+.B simple_shell
+- Is a simple command-line interpreter that provides you an interface to the Linux system.
+Take input when you type a command and execute some functions based on that input and show you
+the execution of that function in other word the output command.
+.SH SYNOPSIS
+.B This simple shell uses tokenization, PATH, buil-in, env for execute a command.
+.I COMMAND
+.I COMMAND [ARGUMENT]
+.I COMMAND [ARGUMENT1] [ARGUMENT2] ... 
+.B ...
+.PP
+.B simple shell
+.I OPTION
+.PP
+.PP
+
+.PP
+
+.PP
+.PP
+.SH DESCRIPTION
+The _printf() function produce output according to a format as described below.
+.PP FORMAT
+.PP
+/bin/ls
+.PP
+/bin/ls -l
+.PP
+/bin/ls -l -a
+.PP
+/bin/ls -la
+.PP
+ls
+.PP
+ls -l
+.PP
+ls -l -a
+.PP
+ls -la
+.SH OPTIONS
+.PP
+commands separator, setenv/unsetenv, piplines || &&, alias build-in, coments, help, history.
+.SH RETURN VALUE
+Upon successful return a output for the command, on unsucessful return an error mesage.
+.SH EXAMPLE
+.PP
+simpleshell$ /bin/ls
+file1 file2 file3 file4 file5 file6 file7 file8
+file1.c file2.c file3.c file4.c file5.c file6.c file7.c file8.c
+simpleshell$
+.SH SEE ALSO
+.I shell in UNIX OS
+.SH BUGS
+No known bugs.
+.SH AUTHORs
+Writen by  Jhonatan Galindo  and  Yesid Gutierrez -- Holberton Students
