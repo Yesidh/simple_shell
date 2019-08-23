@@ -70,7 +70,8 @@ int main (void)
 				else
 					printf(" NOT FOUND\n");
 				i++;
-				memset(stringconcat, 0, sizeof(stringconcat));
+				for (j = 0; j <= 1024; j++)
+					stringconcat[j] = 0;
 			}
 		}
 
