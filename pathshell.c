@@ -1,13 +1,12 @@
 #include "holberton.h"
 int main (void)
 {
-        char *buf, *args, *pathargs;
-	char copiastring[1024] = { 0 }, delim [] = " \n";
-        char *tokens[10] = { NULL };
+        char  *pathargs;
+	char *commandstring;
+	char **tokenscommand;
 	char *pathtokens[10] = { NULL };
 	char *stringpath = { 0 }, pathdelim [] = ":\n";
 	char *stringconcat = { 0 };
-	size_t bufsize;
 	unsigned int i, j, k;
 	ssize_t r;
 	pid_t pid, ppid, pidclosed, childpidstatus;
@@ -18,31 +17,18 @@ int main (void)
 /*getline*/
 	while (flag != EOF)
 	{
-		buf = NULL;
-		bufsize = 0;
-		printf("#usandoPATH$ ");
-		r = getline(&buf, &bufsize, stdin);
-		if (r == -1)
+
+		commandstring = lineget();
+		if (commandstring[0] != '/')
 		{
-			free(buf);
-			perror("No se puede copiar la entrada\n");
-			exit(4);
-		}
-		strncpy(copiastring, buf, sizeof(copiastring));
-		if (copiastring[0] != '/')
-		{
-			tokens[0] = strtok(copiastring, delim);
-			i = 1;
-			while (i < 10)
+			tokenscommand = tokenize(commandstring, " \n");
+			i = 0;
+			while (tokenscommand[i] != '\0')
 			{
-				args = strtok(NULL, delim);
-				if (args == NULL)
-					break;
-				tokens[i] = args;
+				printf("tokencommand: %s\n", tokenscommand[i]);
 				i++;
+				
 			}
-			for (i = 0; i < 10; i++)
-				printf("token[%u]: %s\n", i, tokens[i]);
 /*stat*/
 			stringpath = _getenv("PATH");
 			printf("%s\n", stringpath);
@@ -62,7 +48,7 @@ int main (void)
 			i = 0;
 			while (pathtokens[i])
 			{
-				stringconcat = concatenatokens(tokens, pathtokens);
+				stringconcat = concatenatokens(tokenscommand, pathtokens);
 				printf("tokens: %s\n", stringconcat);
 				
 				if (stat(stringconcat, &st) == 0)
@@ -103,7 +89,6 @@ int main (void)
 			printf("estoy en el padre %d y se ha cerrado el hijo %d\n", ppid, pidclosed);
 			printf("valor de retorno del hijo %d\n", childpidstatus);
 			}*/
-	free(buf);
 	}
 	return (0);
 }
