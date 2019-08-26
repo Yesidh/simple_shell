@@ -40,7 +40,7 @@ char **tokenize(char *stringtotokens, const char *delim)
 		if ( flag == 1)
 			break;
 	}
-	printf("caracteres del primer token: %ld", i);
+	printf("caracteres del primer token: %ld\n", i);
 	lenghtoken = i;
 	tokens[0] = (char *)malloc(sizeof(char *) * i);
 	if (tokens[0] == NULL)
@@ -54,7 +54,8 @@ char **tokenize(char *stringtotokens, const char *delim)
 		flag = 0;
 		lenghtoken++;
 		tok++;
-		for (i = 0; stringtotokens[lenghtoken] != '\0'; i++, lenghtoken)
+		i = 0;
+		for (; stringtotokens[lenghtoken] != '\0'; i++, lenghtoken++)
 		{
 			for (j = 0; delim[j] != '\0'; j++)
 			{
@@ -67,7 +68,16 @@ char **tokenize(char *stringtotokens, const char *delim)
 			if ( flag == 1)
 				break;
 		}
-		printf("tamanho para el malloc %ld\n", i);
+		if (i > 0)
+		{
+			printf("tamanho para el malloc %ld\n", i);
+			tokens[tok] = (char *)malloc(sizeof(char) * i);
+			if (tokens[tok] == NULL)
+			{
+				perror("can't alloc memory into tokens");
+				exit(-1);
+			}
+		}
 		tokens[tok] = strtok(NULL, delim);
 		if (tokens[tok] == NULL)
 			break;
