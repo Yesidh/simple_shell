@@ -5,13 +5,12 @@ int main (void)
 	char *commandstring;
 	char **tokenscommand;
 	char **tokenspath;
-	char *stringpath = { 0 }, pathdelim [] = ":\n";
-	char *stringconcat = { 0 };
+	char *stringpath;
+	char *stringconcat;
 	unsigned int i, j, k;
 	ssize_t r;
 	pid_t pid, ppid, pidclosed, childpidstatus;
 	int status = 0, flag = 0;
-	struct stat st;
 
 
 	while (flag != EOF)
@@ -26,7 +25,6 @@ int main (void)
 				printf("tokencommand[%d]: %s\n",i, tokenscommand[i]);
 				i++;
 			}
-/*stat*/
 			stringpath = _getenv("PATH");
 			printf("%s\n", stringpath);
 			tokenspath = tokenize(stringpath, ":\n");
@@ -36,50 +34,11 @@ int main (void)
 				printf("pathtoken[%u]: %s\n", i, tokenspath[i]);
 				i++;
 			}
-			i = 0;
-			while (tokenspath[i])
-			{
-				stringconcat = concatenatokens(tokenscommand, tokenspath);
-				printf("tokens: %s\n", stringconcat);
-				
-				if (stat(stringconcat, &st) == 0)
-					printf(" FOUND\n");
-				else
-					printf(" NOT FOUND\n");
-				i++;
-				for (j = 0; j <= 1024; j++)
-					stringconcat[j] = 0;
-			}
+			stringconcat = concatenatokens(tokenscommand, tokenspath);
+			printf("tokens: %s\n", stringconcat);
+			worker(stringconcat, tokenscommand);
+			simonbolivar(**
 		}
-
-
-
-/*fork()
-		ppid = getppid();
-		pid = fork();
-		printf("PPID %d\n", ppid);
-		printf("PID created by fork: %u\n", pid);
-		if (pid < 0)
-			perror("fork failure\n");
-		printf("antes del if del execute\n");
-		if (pid == 0)
-		{
-			sleep(3);
-			printf("estoy en el hijo\n");
-			execv(tokens[0], tokens);
-			exit(5);
-		}
-		memset(copiastring, 0, sizeof(copiastring));
-		printf("estado del copiastring %s\n", copiastring);
-		for (i = 0; i < 10; i++)
-			tokens[i] = NULL;
-		childpidstatus = WEXITSTATUS(status);
-		if (pid > 0)
-		{
-			pidclosed = wait(NULL);
-			printf("estoy en el padre %d y se ha cerrado el hijo %d\n", ppid, pidclosed);
-			printf("valor de retorno del hijo %d\n", childpidstatus);
-			}*/
 	}
 	return (0);
 }
