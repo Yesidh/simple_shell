@@ -16,6 +16,10 @@ int main(void)
 	int flag = 0;
 	int res;
 	char c;
+	char *stringpath;
+	char **tokenspath;
+	char *stringconcat = { 0 };
+	char **tokenscommand;
 
 	while (1)
 	{
@@ -54,6 +58,17 @@ int main(void)
 			{
 				_exityj(&line);
 			}
+
+			stringpath = _getenv("PATH");
+
+			tokenspath = tokenize(stringpath, ":/n");
+
+			stringconcat = concatenatokens(tokenscommand, tokenspath);
+
+			write(STDIN_FILENO, stringconcat, _strlen(stringconcat));
+
+			tokens[0] = stringconcat;
+
 			child_pid = fork();
 			if (child_pid == -1) {
 				printf("error al crear el child");
