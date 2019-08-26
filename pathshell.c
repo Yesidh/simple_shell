@@ -4,7 +4,7 @@ int main (void)
         char  *pathargs;
 	char *commandstring;
 	char **tokenscommand;
-	char *pathtokens[10] = { NULL };
+	char **tokenspath;
 	char *stringpath = { 0 }, pathdelim [] = ":\n";
 	char *stringconcat = { 0 };
 	unsigned int i, j, k;
@@ -14,10 +14,8 @@ int main (void)
 	struct stat st;
 
 
-/*getline*/
 	while (flag != EOF)
 	{
-
 		commandstring = lineget();
 		if (commandstring[0] != '/')
 		{
@@ -25,30 +23,23 @@ int main (void)
 			i = 0;
 			while (tokenscommand[i] != '\0')
 			{
-				printf("tokencommand: %s\n", tokenscommand[i]);
+				printf("tokencommand[%d]: %s\n",i, tokenscommand[i]);
 				i++;
-				
 			}
 /*stat*/
 			stringpath = _getenv("PATH");
 			printf("%s\n", stringpath);
+			tokenspath = tokenize(stringpath, ":\n");
 			i = 0;
-			pathtokens[0] = strtok(stringpath, pathdelim);
-			i = 1;
-			while (i < 10)
+			while (tokenspath[i] != '\0')
 			{
-				pathargs = strtok(NULL, pathdelim);
-				if (pathargs == NULL)
-					break;
-				pathtokens[i] = pathargs;
+				printf("pathtoken[%u]: %s\n", i, tokenspath[i]);
 				i++;
 			}
-			for (i = 0; i < 10; i++)
-				printf("pathtoken[%u]: %s\n", i, pathtokens[i]);
 			i = 0;
-			while (pathtokens[i])
+			while (tokenspath[i])
 			{
-				stringconcat = concatenatokens(tokenscommand, pathtokens);
+				stringconcat = concatenatokens(tokenscommand, tokenspath);
 				printf("tokens: %s\n", stringconcat);
 				
 				if (stat(stringconcat, &st) == 0)
