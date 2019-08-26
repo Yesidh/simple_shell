@@ -7,12 +7,11 @@
  */
 char *_getenv(const char *name)
 {
-	unsigned int i, j, k;
+	size_t i = 0, j = 0, k = 0;
+	size_t lenghpath = 0;
 	extern char **environ;
-	char *route[1024] = { NULL };
+	char *route;
 
-	i = 0;
-	j = 0;
 	while (environ[i] != NULL)
 	{
 		if (environ[i][j] == name[j])
@@ -24,12 +23,14 @@ char *_getenv(const char *name)
 			}
 			if (name[j] == '\0')
 			{
-
-				*route = environ[i];
-				for (k = 0; route[0][k] != '='; k++)
+				for (j = 0; environ[i][j] != '\0'; lenghpath++, j++)
 					;
-				k++;
-				return(*route + k);
+				printf("el tamanho del path es: %ld\n", lenghpath);
+				route = (char *)malloc(sizeof(char) * (j +1));
+				route = environ[i];
+				for (k = 1; route[k - 1] != '='; k++)
+					;
+				return(route + k);
 			}
 		}
 		i++;
