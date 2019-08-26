@@ -10,4 +10,8 @@
 #include <sys/stat.h>
 
 char *_getenv(const char *name);
+char *concatenatokens(char **tokenscommand, char **tokenspath);
+char *lineget(void);
+char **tokenize(char *stringtokens, const char *delim);
+int worker(char *stringconcat, char **tokenscomand);
 #endif
