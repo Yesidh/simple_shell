@@ -37,6 +37,7 @@ int main (void)
 			stringconcat = concatenatokens(tokenscommand, tokenspath);
 			printf("tokens: %s\n", stringconcat);
 			worker(stringconcat, tokenscommand);
+			simonbolivar(**
 		}
 	}
 	return (0);
