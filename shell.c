@@ -1,5 +1,4 @@
 #include "holberton.h"
-extern char **environ;
 /**
  * main - read commands with their full path
  *
@@ -14,11 +13,9 @@ int main(void)
 	pid_t child_pid;
 	int status = 1, i;
 	char *tokens[256] = {NULL};
-	char **envloc = environ;
 	int flag = 0;
 	int res;
 	char c;
-	char *envlist[256] = {NULL};
 
 	while (1)
 	{
@@ -51,20 +48,11 @@ int main(void)
 			i = 0;
 
 			if ((strcmp(tokens[0], "env") == 0)  && !tokens[1])
-			{
-				for(i = 0; envloc[i] != NULL; i++)
-				{
-					write(STDIN_FILENO, envloc[i], _strlen(envloc[i] + 1));
-					write(STDIN_FILENO, "\n", 1);
-				}
-			}
+				_env();
 
 			if (!strncmp(tokens[0], "exit", 4) && !tokens[1])
 			{
-				flag = 2;
-				if (line)
-					free(line);
-				return(0);
+				_exityj(&line);
 			}
 			child_pid = fork();
 			if (child_pid == -1) {
