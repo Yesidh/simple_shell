@@ -1,11 +1,11 @@
 #include "holberton.h"
 int main (void)
 {
-	char *commandstring;
-	char **tokenscommand;
-	char **tokenspath;
-	char *stringpath;
-	char *stringconcat;
+	char *commandstring = NULL;
+	char **tokenscommand = NULL;
+	char **tokenspath = NULL;
+	char *stringpath = NULL;
+	char *stringconcat = NULL;
 	int  flag = 0;
 	int i = 0;
 
@@ -46,17 +46,22 @@ int main (void)
 			free(tokenscommand[i]);
 			i++;
 		}
-		free(tokenscommand);
+		if (tokenscommand)
+			free(tokenscommand);
 		i = 0;
 		while(tokenspath[i])
 		{
-			free(tokenspath[i]);
-			i++;
-		}
-		free(tokenspath);
-		free(commandstring);
-		free(stringconcat);
-		free(stringpath);
+		 	free(tokenspath[i]);
+		 	i++;
+		 }
+		if (tokenspath)
+			free(tokenspath);
+		if (commandstring)
+			free(commandstring);
+		if (stringconcat)
+			free(stringconcat);
+		if (stringpath)
+			free(stringpath);
 	}
 	return (0);
 }

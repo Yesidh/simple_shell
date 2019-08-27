@@ -10,10 +10,11 @@ void _exityj(char **line, char **tokenscommand)
 	if (*line)
 		free(*line);
 	while(tokenscommand[i])
-	{
-		free(tokenscommand[i]);
-		i++;
-	}
-	free(tokenscommand);
+	 {
+	 	free(tokenscommand[i]);
+	 	i++;
+	 }
+	if (tokenscommand)
+		free(tokenscommand);
 	exit(98);
 }
