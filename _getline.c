@@ -8,7 +8,7 @@
 char *_getline(void)
 {
 	ssize_t res = 0;
-	ssize_t bufsize = 0;
+	size_t bufsize = 0;
 	int i = 0;
 	char *buf = NULL;
 
