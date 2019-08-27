@@ -10,7 +10,8 @@ int simonbolivar(char **lancero)
 
 	while (lancero[i] != NULL)
 	{
-		free(lancero[i]);	
+		if (lancero[i] != NULL)
+			free(lancero[i]);	
 		i++;
 	}
 	if (lancero)

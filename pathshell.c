@@ -24,7 +24,7 @@ int main (void)
 			}
 			if ((_strcmp(tokenscommand[0], "exit") == 0) && !tokenscommand[1])
 			{
-				_exityj(&commandstring);
+				_exityj(&commandstring, tokenscommand);
 				flag = 1;
 			}
 			if (flag != 1)
@@ -40,6 +40,23 @@ int main (void)
 			tokenscommand = tokenize(commandstring, " \n");
 			worker(tokenscommand[0], tokenscommand);
 		}
+		i = 0;
+		while(tokenscommand[i])
+		{
+			free(tokenscommand[i]);
+			i++;
+		}
+		free(tokenscommand);
+		i = 0;
+		while(tokenspath[i])
+		{
+			free(tokenspath[i]);
+			i++;
+		}
+		free(tokenspath);
+		free(commandstring);
+		free(stringconcat);
+		free(stringpath);
 	}
 	return (0);
 }
