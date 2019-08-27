@@ -16,10 +16,12 @@ char *_getline(void)
 	signal(SIGINT, _sigint_handler);
 	res = getline(&buf, &bufsize, stdin);
 
+
 	while (1)
 	{
 		if (res == EOF)
 		{
+			free(buf);
 			write(STDIN_FILENO, "\n", 1);
 			exit(98);
 		}
@@ -38,6 +40,7 @@ char *_getline(void)
 
 		if (res == EOF)
 		{
+			free(buf);
 			write(STDIN_FILENO, "\n", 1);
 			exit(98);
 		}
