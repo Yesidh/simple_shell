@@ -7,6 +7,7 @@ int main (void)
 	char *stringpath;
 	char *stringconcat;
 	int  flag = 0;
+	int i = 0;
 
 
 	while (flag != EOF)
@@ -25,7 +26,7 @@ int main (void)
 			tokenscommand = tokenize(commandstring, " \n");
 			worker(tokenscommand[0], tokenscommand);
 		}
-	
+
 	}
 	return (0);
 }

@@ -22,4 +22,5 @@ void _sigint_handler(int sig);
 int _strlen(char *s);
 void _env(void);
 void _exityj(char **);
+int simonbolivar( char **lancero);
 #endif
