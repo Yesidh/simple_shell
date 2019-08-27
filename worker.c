@@ -16,7 +16,7 @@ int worker(char *stringconcat, char **tokenscommand)
 		perror("fork failure\n");
 	if (pid == 0)
 	{
-		execv(stringconcat, tokenscommand);
+		execve(stringconcat, tokenscommand, NULL);
 		exit(5);
 	}
 	if (pid > 0)

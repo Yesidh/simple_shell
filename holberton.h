@@ -19,6 +19,7 @@ ssize_t promptcycle(char *buf);
 void _sigint_handler(int sig);
 void _env(void);
 void _exityj(char **);
+int simonbolivar( char **lancero);
 int _getchar(void);
 char *_getline(void);
 int _strcmp(char *s1, char *s2);

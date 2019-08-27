@@ -25,7 +25,6 @@ char *_getenv(const char *name)
 			{
 				for (j = 0; environ[i][j] != '\0'; lenghpath++, j++)
 					;
-				printf("el tamanho del path es: %ld\n", lenghpath);
 				route = (char *)malloc(sizeof(char) * (j +1));
 				route = environ[i];
 				for (k = 1; route[k - 1] != '='; k++)

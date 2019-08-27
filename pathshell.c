@@ -6,8 +6,8 @@ int main (void)
 	char **tokenspath;
 	char *stringpath;
 	char *stringconcat;
-	int  flag;
-
+	int  flag = 0;
+	int i = 0;
 
 	while (flag != EOF)
 	{
