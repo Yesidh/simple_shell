@@ -1,0 +1,16 @@
+#include "holberton.h"
+/**
+ *
+ *
+ *
+ *
+ */
+int _getchar(void)
+{
+	char c;
+
+	if (read(STDIN_FILENO, &c, sizeof(char)) > 0)
+		return (c);
+
+	return (EOF);
+}
