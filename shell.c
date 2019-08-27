@@ -13,7 +13,6 @@ int main(void)
 	pid_t child_pid;
 	int status = 1, i;
 	char *tokens[256] = {NULL};
-	int *flag = 0;
 	int res;
 	char c;
 	char *stringpath;
@@ -23,7 +22,7 @@ int main(void)
 
 	while (1)
 	{
-		line  = _getline(flag);
+		line  = _getline();
 
 		while(tokens[i])
 		{
@@ -62,6 +61,7 @@ int main(void)
 			stringpath = _getenv("PATH");
 			tokenspath = tokenize(stringpath, ":\n");
 			tokenscommand = tokenize(line, " \n");
+
 			i = 0;
 
 			stringconcat = concatenatokens(tokenscommand, tokenspath);
@@ -87,9 +87,6 @@ int main(void)
 			} else {
 				wait(&status);
 			}
-
-			if (*flag == 1)
-				break;
 		}
 	}
 
