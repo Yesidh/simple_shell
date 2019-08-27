@@ -13,16 +13,16 @@ int main(void)
 	pid_t child_pid;
 	int status = 1, i;
 	char *tokens[256] = {NULL};
-	int flag = 0;
 	int res;
 	char c;
+	char *stringpath;
+	char **tokenspath;
+	char *stringconcat = { 0 };
+	char **tokenscommand;
 
 	while (1)
 	{
 		line  = _getline();
-
-		if (line == "controlD")
-			return (0);
 
 		while(tokens[i])
 		{
@@ -54,6 +54,22 @@ int main(void)
 			{
 				_exityj(&line);
 			}
+
+			if (line[0] != '/')
+			{
+
+			stringpath = _getenv("PATH");
+			tokenspath = tokenize(stringpath, ":\n");
+			tokenscommand = tokenize(line, " \n");
+
+			i = 0;
+
+			stringconcat = concatenatokens(tokenscommand, tokenspath);
+
+			tokens[0] = stringconcat;
+
+			}
+
 			child_pid = fork();
 			if (child_pid == -1) {
 				printf("error al crear el child");
