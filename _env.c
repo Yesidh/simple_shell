@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * _env - to print environmental variable
+ * _env - prints the environment variable in the stdout
  *
  * Return: nothing
  */
