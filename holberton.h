@@ -18,7 +18,7 @@ int worker(char *stringconcat, char **tokenscomand);
 ssize_t promptcycle(char *buf);
 void _sigint_handler(int sig);
 void _env(void);
-void _exityj(char **);
+void _exityj(char **, char **tokenscommand);
 int simonbolivar( char **lancero);
 int _getchar(void);
 char *_getline(void);
