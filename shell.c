@@ -13,7 +13,7 @@ int main(void)
 	pid_t child_pid;
 	int status = 1, i;
 	char *tokens[256] = {NULL};
-	int flag = 0;
+	int *flag = 0;
 	int res;
 	char c;
 	char *stringpath;
@@ -23,10 +23,7 @@ int main(void)
 
 	while (1)
 	{
-		line  = _getline();
-
-		if (line == "controlD")
-			return (0);
+		line  = _getline(flag);
 
 		while(tokens[i])
 		{
@@ -59,15 +56,19 @@ int main(void)
 				_exityj(&line);
 			}
 
-			stringpath = _getenv("PATH");
+			if (line[0] != '/')
+			{
 
-			tokenspath = tokenize(stringpath, ":/n");
+			stringpath = _getenv("PATH");
+			tokenspath = tokenize(stringpath, ":\n");
+			tokenscommand = tokenize(line, " \n");
+			i = 0;
 
 			stringconcat = concatenatokens(tokenscommand, tokenspath);
 
-			write(STDIN_FILENO, stringconcat, _strlen(stringconcat));
-
 			tokens[0] = stringconcat;
+
+			}
 
 			child_pid = fork();
 			if (child_pid == -1) {
@@ -86,6 +87,9 @@ int main(void)
 			} else {
 				wait(&status);
 			}
+
+			if (*flag == 1)
+				break;
 		}
 	}
 
