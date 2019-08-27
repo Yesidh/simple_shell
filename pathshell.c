@@ -6,12 +6,12 @@ int main (void)
 	char **tokenspath;
 	char *stringpath;
 	char *stringconcat;
-	int  flag;
-
+	int flag = 0;
+	int flagdoor = 0;
 
 	while (flag != EOF)
 	{
-		flag = 0;
+		flagdoor = 0;
 
 		commandstring = _getline();
 		if (commandstring[0] != '/')
@@ -20,14 +20,14 @@ int main (void)
 			if ((_strcmp(tokenscommand[0], "env") == 0) && !tokenscommand[1])
 			{
 				_env();
-				flag = 1;
+				flagdoor = 1;
 			}
 			if ((_strcmp(tokenscommand[0], "exit") == 0) && !tokenscommand[1])
 			{
 				_exityj(&commandstring);
-				flag = 1;
+				flagdoor = 1;
 			}
-			if (flag != 1)
+			if (flagdoor != 1)
 			{
 				stringpath = _getenv("PATH");
 				tokenspath = tokenize(stringpath, ":\n");
