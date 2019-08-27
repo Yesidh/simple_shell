@@ -6,26 +6,40 @@ int main (void)
 	char **tokenspath;
 	char *stringpath;
 	char *stringconcat;
-	int  flag = 0;
+	int  flag;
 
 
 	while (flag != EOF)
 	{
-		commandstring = lineget();
+		flag = 0;
+
+		commandstring = _getline();
 		if (commandstring[0] != '/')
 		{
 			tokenscommand = tokenize(commandstring, " \n");
-			stringpath = _getenv("PATH");
-			tokenspath = tokenize(stringpath, ":\n");
-			stringconcat = concatenatokens(tokenscommand, tokenspath);
-		      	worker(stringconcat, tokenscommand);
+			if ((_strcmp(tokenscommand[0], "env") == 0) && !tokenscommand[1])
+			{
+				_env();
+				flag = 1;
+			}
+			if ((_strcmp(tokenscommand[0], "exit") == 0) && !tokenscommand[1])
+			{
+				_exityj(&commandstring);
+				flag = 1;
+			}
+			if (flag != 1)
+			{
+				stringpath = _getenv("PATH");
+				tokenspath = tokenize(stringpath, ":\n");
+				stringconcat = concatenatokens(tokenscommand, tokenspath);
+				worker(stringconcat, tokenscommand);
+			}
 		}
 		else
 		{
 			tokenscommand = tokenize(commandstring, " \n");
 			worker(tokenscommand[0], tokenscommand);
 		}
-	
 	}
 	return (0);
 }
