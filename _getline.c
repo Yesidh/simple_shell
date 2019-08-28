@@ -13,12 +13,12 @@ char *_getline(void)
 	char *buf = NULL;
 
 	signal(SIGINT, _sigint_handler);
-	res = getline(&buf, &bufsize, stdin);
-
-
 	 while (1)
 	 {
-		 if (res == EOF)
+		 if (isatty(STDIN_FILENO))
+			 write(STDIN_FILENO, "$ ", 2);
+	 res = getline(&buf, &bufsize, stdin);
+	 if (res == EOF)
 		 {
 			 if (buf)
 				 free(buf);
@@ -33,10 +33,13 @@ char *_getline(void)
 					 return (buf);
 			 }
 		 }
-
+		 else
+		 {
+			 continue;
+		 }
 		 signal(SIGINT, _sigint_handler);
 		 res = getline(&buf, &bufsize, stdin);
-		 
+
 		 if (res == EOF)
 		 {
 			 if (buf)
@@ -45,7 +48,7 @@ char *_getline(void)
 			 exit(98);
 		 }
 	 }
-	 
+
 	 if (res == EOF)
 	 {
 		 write(STDIN_FILENO, "\n", 1);

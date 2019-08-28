@@ -18,14 +18,10 @@ int main (int ac, char **av, char ** env)
 			perror("Error:");
 			exit(0);
 		}
-
-		if (isatty(STDIN_FILENO))
-			write(STDIN_FILENO, "$ ", 2);
-
 		flag = 0;
 		commandstring = _getline();
 		tokenize2(commandstring, tokenscommand, " \n\t");
-		if (tokenscommand[0][0] != '/')
+		if (tokenscommand[0] && tokenscommand[0][0] != '/')
 		{
 			if ((_strcmp(tokenscommand[0], "env") == 0) && !tokenscommand[1])
 			{
@@ -45,6 +41,8 @@ int main (int ac, char **av, char ** env)
 				{
 					if(concatenatokens(tokenscommand, tokenspath, stringconcat) == 1)
 						worker(stringconcat, tokenscommand, commandstring, env);
+					else
+						write(STDIN_FILENO, "command not found", 17);
 				}
 			}
 		}
