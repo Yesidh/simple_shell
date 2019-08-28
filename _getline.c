@@ -17,42 +17,42 @@ char *_getline(void)
 	res = getline(&buf, &bufsize, stdin);
 
 
-	while (1)
-	{
-		if (res == EOF)
-		{
-			if (buf)
-				free(buf);
-			write(STDIN_FILENO, "\n", 1);
-			exit(98);
-		}
-		if (buf[0] != '\n')
-		{
-			for (i = 0; buf[i] != '\0'; i++)
-			{
-				if (buf[i] == '\n')
-					return (buf);
-			}
-		}
-		write(STDIN_FILENO, PROMPT, 9);
-		signal(SIGINT, _sigint_handler);
-		res = getline(&buf, &bufsize, stdin);
-
-		if (res == EOF)
-		{
-			if (buf)
-				free(buf);
-			write(STDIN_FILENO, "\n", 1);
-			exit(98);
-		}
-	}
-	
-	if (res == EOF)
-	{
-		write(STDIN_FILENO, "\n", 1);
-		exit(98);
-	}
-	if (buf)
-		free(buf);
-	return (NULL);
+	 while (1)
+	 {
+		 if (res == EOF)
+		 {
+			 if (buf)
+				 free(buf);
+			 write(STDIN_FILENO, "\n", 1);
+			 exit(98);
+		 }
+		 if (buf[0] != '\n')
+		 {
+			 for (i = 0; buf[i] != '\0'; i++)
+			 {
+				 if (buf[i] == '\n')
+					 return (buf);
+			 }
+		 }
+		 write(STDIN_FILENO, PROMPT, 9);
+		 signal(SIGINT, _sigint_handler);
+		 res = getline(&buf, &bufsize, stdin);
+		 
+		 if (res == EOF)
+		 {
+			 if (buf)
+				 free(buf);
+			 write(STDIN_FILENO, "\n", 1);
+			 exit(98);
+		 }
+	 }
+	 
+	 if (res == EOF)
+	 {
+		 write(STDIN_FILENO, "\n", 1);
+		 exit(98);
+	 }
+	 if (buf)
+		 free(buf);
+	 return (NULL);
 }
