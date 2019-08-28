@@ -5,16 +5,13 @@
  * @tokenpath: pointer to tokens of the PATH
  * Return: a pointer to concatenate string
  */
-char *concatenatokens(char **tokenscommand, char **tokenspath)
+int concatenatokens(char **tokenscommand, char **tokenspath, char *stringconcat)
 {
 	size_t j = 0, k = 0, l = 0;
-	char *stringconcat = NULL;
 	struct stat st;
-
 
 	for (j = 0; tokenspath[j] != NULL; j++)
 	{
-		stringconcat = malloc(sizeof(char) * 120);
 		for (k = 0; tokenspath[j][k] != '\0'; k++)
 			stringconcat[k] = tokenspath[j][k];
 		stringconcat[k] = '/';
@@ -23,8 +20,7 @@ char *concatenatokens(char **tokenscommand, char **tokenspath)
 			stringconcat[k] = tokenscommand[0][l];
 		stringconcat[k] = '\0';
 		if (stat(stringconcat, &st) == 0)
-			return (stringconcat);
-		free(stringconcat);
+			return (1);
 	}
 	return(0);
 }

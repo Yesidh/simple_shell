@@ -10,7 +10,7 @@
 #define DELIM " \n"
 #define PROMPT "#cisfun$ "
 #include<signal.h>
-char *concatenatokens(char **tokenscommand, char **tokenspath);
+int concatenatokens(char **tokenscommand, char **tokenspath, char *stringconcat);
 char *lineget(void);
 char **tokenize(char *stringtokens, const char *delim);
 int worker(char *stringconcat, char **tokenscomand, char *commandstring);

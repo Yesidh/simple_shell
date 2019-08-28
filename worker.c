@@ -3,7 +3,7 @@
  * worker - funtion for execute a command
  * @stringconcat: command directory
  * @tokenscommand: arguments array command
- *
+ * @commandstring:
  * Return: always 1
  */
 int worker(char *stringconcat, char **tokenscommand, char *commandstring)
