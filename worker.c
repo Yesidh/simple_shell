@@ -8,9 +8,8 @@
  */
 int worker(char *stringconcat, char **tokenscommand, char *commandstring)
 {
-	pid_t pid, ppid, pidclosed, childpidstatus;
+	pid_t pid;
 
-	ppid = getppid();
 	pid = fork();
 	if (pid < 0)
 		perror("fork failure\n");
@@ -30,6 +29,6 @@ int worker(char *stringconcat, char **tokenscommand, char *commandstring)
 		}
 	}
 	if (pid > 0)
-		pidclosed = wait(NULL);
+		wait(NULL);
 	return (0);
 }

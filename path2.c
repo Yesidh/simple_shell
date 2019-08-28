@@ -7,7 +7,6 @@ int main (void)
 	char stringpath[512];
 	char *stringconcat = NULL;
 	int  flag = 0;
-	int i = 0;
 	while (1)
 	{
 		flag = 0;
