@@ -12,7 +12,6 @@ char *_getline(void)
 	int i = 0;
 	char *buf = NULL;
 
-	write(STDIN_FILENO, PROMPT, 9);
 	signal(SIGINT, _sigint_handler);
 	res = getline(&buf, &bufsize, stdin);
 
@@ -34,7 +33,7 @@ char *_getline(void)
 					 return (buf);
 			 }
 		 }
-		 write(STDIN_FILENO, PROMPT, 9);
+
 		 signal(SIGINT, _sigint_handler);
 		 res = getline(&buf, &bufsize, stdin);
 		 
