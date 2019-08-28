@@ -6,7 +6,6 @@ int main (void)
 	char *tokenspath[50] = { 0 };
 	char stringpath[512];
 	char stringconcat[120];
-	/* size_t linesize = 0; */
 	int  flag = 0;
 	pid_t pid = 0;
 	while (1)
@@ -22,7 +21,7 @@ int main (void)
 
 		flag = 0;
 		commandstring = _getline();
-		tokenize2(commandstring, tokenscommand, " \n");
+		tokenize2(commandstring, tokenscommand, " \n\t");
 		if (tokenscommand[0][0] != '/')
 		{
 			if ((_strcmp(tokenscommand[0], "env") == 0) && !tokenscommand[1])
@@ -38,7 +37,7 @@ int main (void)
 			if (flag != 1)
 			{
 				_getenv2("PATH", stringpath);
-				tokenize2(stringpath, tokenspath, ":\n");
+				tokenize2(stringpath, tokenspath, ":\n\t");
 				if (tokenspath[0])
 				{
 					if(concatenatokens(tokenscommand, tokenspath, stringconcat) == 1)
@@ -48,14 +47,11 @@ int main (void)
 		}
 		else
 		{
-			/* tokenize2(commandstring, tokenscommand, " \n"); */
 			if (tokenscommand[0])
 				worker(tokenscommand[0], tokenscommand, commandstring);
 		}
-		/* if (stringconcat) */
-		/* 	free(stringconcat); */
-		 if (commandstring) 
-		 	free(commandstring); 
+		 if (commandstring)
+		 	free(commandstring);
 	}
 	return (0);
 }
