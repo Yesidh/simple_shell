@@ -6,17 +6,16 @@
  * @commandstring:
  * Return: always 1
  */
-int worker(char *stringconcat, char **tokenscommand, char *commandstring)
+int worker(char *stringconcat, char **tokenscommand, char *commandstring, char **env)
 {
 	pid_t pid;
-	extern char **environ;
 
 	pid = fork();
 	if (pid < 0)
 		perror("fork failure\n");
 	if (pid == 0)
 	{
-		if (execve(stringconcat, tokenscommand, environ) == -1)
+		if (execve(stringconcat, tokenscommand, env) == -1)
 		{
 			if (commandstring)
 				free(commandstring);

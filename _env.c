@@ -4,15 +4,13 @@
  *
  * Return: nothing
  */
-extern char** environ;
-void _env(void)
+void _env(char **env)
 {
-	char **envloc = environ;
 	int i;
 
-	for(i = 0; envloc[i] != NULL; i++)
+	for(i = 0; env[i] != NULL; i++)
 	{
-		write(STDIN_FILENO, envloc[i], _strlen(envloc[i] + 1));
+		write(STDIN_FILENO, env[i], _strlen(env[i] + 1));
 		write(STDIN_FILENO, "\n", 1);
 	}
 }

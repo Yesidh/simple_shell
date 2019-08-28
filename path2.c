@@ -1,5 +1,5 @@
 #include "holberton.h"
-int main (void)
+int main (int ac, char **av, char ** env)
 {
 	char *commandstring = NULL;
 	char *tokenscommand[50] = { 0 };
@@ -8,6 +8,9 @@ int main (void)
 	char stringconcat[120];
 	int  flag = 0;
 	pid_t pid = 0;
+	(void) ac;
+	(void) av;
+
 	while (1)
 	{
 		if (pid == -1)
@@ -26,7 +29,7 @@ int main (void)
 		{
 			if ((_strcmp(tokenscommand[0], "env") == 0) && !tokenscommand[1])
 			{
-				_env();
+				_env(env);
 				flag = 1;
 			}
 			if ((_strcmp(tokenscommand[0], "exit") == 0) && !tokenscommand[1])
@@ -36,19 +39,19 @@ int main (void)
 			}
 			if (flag != 1)
 			{
-				_getenv2("PATH", stringpath);
+				_getenv2("PATH", stringpath, env);
 				tokenize2(stringpath, tokenspath, ":\n\t");
 				if (tokenspath[0])
 				{
 					if(concatenatokens(tokenscommand, tokenspath, stringconcat) == 1)
-						worker(stringconcat, tokenscommand, commandstring);
+						worker(stringconcat, tokenscommand, commandstring, env);
 				}
 			}
 		}
 		else
 		{
 			if (tokenscommand[0])
-				worker(tokenscommand[0], tokenscommand, commandstring);
+				worker(tokenscommand[0], tokenscommand, commandstring, env);
 		}
 		 if (commandstring)
 		 	free(commandstring);
