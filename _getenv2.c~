@@ -4,13 +4,14 @@
  * @name: variable name for search
  * Return: a pointer to enviroment variable.
  */
-extern char**environ;
-char *_getenv(const char *name)
+extern char** environ;
+void _getenv2(const char *name, char *stringpath)
 {
 	size_t i = 0, j = 0, k = 0;
 	size_t lenghpath = 0;
-	char **envloc = environ;
+	char **environ = envloc;
 	char *route = NULL;
+
 	while (envloc[i] != NULL)
 	{
 		if (envloc[i][j] == name[j])
@@ -28,10 +29,11 @@ char *_getenv(const char *name)
 				route = envloc[i];
 				for (k = 1; route[k - 1] != '='; k++)
 					;
-				return(route + k);
+				stringpath = route + k;
+				return;
 			}
 		}
 		i++;
 	}
-	return (0);
+	return;
 }
