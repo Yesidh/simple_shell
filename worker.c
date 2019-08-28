@@ -9,13 +9,14 @@
 int worker(char *stringconcat, char **tokenscommand, char *commandstring)
 {
 	pid_t pid;
+	extern char **environ;
 
 	pid = fork();
 	if (pid < 0)
 		perror("fork failure\n");
 	if (pid == 0)
 	{
-		if (execve(stringconcat, tokenscommand, NULL) == -1)
+		if (execve(stringconcat, tokenscommand, environ) == -1)
 		{
 			if (commandstring)
 				free(commandstring);
