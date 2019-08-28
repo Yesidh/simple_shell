@@ -8,6 +8,9 @@ void _getenv2(const char *name, char *stringpath, char **env)
 {
     size_t i = 0, j = 0;
     size_t lenghpath = 0;
+
+    if ((name == NULL) || (env == NULL))
+	    return;
     while (env[i] != NULL)
     {
 	    if (env[i][j] == name[j])

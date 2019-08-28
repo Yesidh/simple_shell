@@ -10,6 +10,8 @@ int concatenatokens(char **tokenscommand, char **tokenspath, char *stringconcat)
 	size_t j = 0, k = 0, l = 0;
 	struct stat st;
 
+	if ((tokenscommand == NULL) || (tokenspath == NULL))
+		return(-1);
 	for (j = 0; tokenspath[j] != NULL; j++)
 	{
 		for (k = 0; tokenspath[j][k] != '\0'; k++)

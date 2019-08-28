@@ -8,6 +8,8 @@ void _env(char **env)
 {
 	int i;
 
+	if (env == NULL)
+		return;
 	for(i = 0; env[i] != NULL; i++)
 	{
 		write(STDIN_FILENO, env[i], _strlen(env[i] + 1));

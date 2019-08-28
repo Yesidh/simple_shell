@@ -9,7 +9,10 @@
 int worker(char *stringconcat, char **tokenscommand, char *commandstring, char **env)
 {
 	pid_t pid;
+	size_t cont = 0;
 
+	if ((tokenscommand == NULL) || (stringconcat == NULL) || (env == NULL))
+		return (-1);
 	pid = fork();
 	if (pid < 0)
 		perror("fork failure\n");
@@ -23,10 +26,12 @@ int worker(char *stringconcat, char **tokenscommand, char *commandstring, char *
 		}
 		else
 		{
+			cont++;
 			write(STDIN_FILENO, "command not found", 17);
 			if (commandstring)
 				free(commandstring);
-		}
+			return (cont);
+	}
 	}
 	if (pid > 0)
 		wait(NULL);

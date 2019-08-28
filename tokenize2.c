@@ -9,6 +9,9 @@
 void tokenize2(char *stringtotokens, char **tokenspath, char *delim)
 {
 	size_t i = 0;
+
+	if ((stringtotokens == NULL) || (tokenspath == NULL) || (delim == NULL))
+		return;
 	tokenspath[i] = strtok(stringtotokens, delim);
 	while (i < 50)
 	{

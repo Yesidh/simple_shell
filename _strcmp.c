@@ -11,6 +11,8 @@ int _strcmp(char *s1, char *s2)
 	int counter;
 	int diff = 0;
 
+	if (s1 == NULL || s2 == NULL)
+		return (-1);
 	for (counter = 0; s1[counter] != '\0'; counter++)
 	{
 		if (s1[counter] == s2[counter])

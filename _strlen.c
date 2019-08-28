@@ -9,6 +9,8 @@ int _strlen(char *s)
 {
 	int increment = 0;
 
+	if (s == NULL)
+		return (-1);
 	while (*(s + increment) != '\0')
 	{
 		increment++;
