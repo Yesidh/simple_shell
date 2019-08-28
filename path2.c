@@ -1,12 +1,11 @@
 #include "holberton.h"
-void mainaux(char *stringconcat, char **tokenspath,
-	      char *stringpath, char *commandstring,
-	      char **tokenscommand, char **env);
- /**
+/**
  * main - simple shell project
+ *
  * @ac: arguments numbers
  * @av: pointer to arguments arrays
  * @env: environ variable
+ *
  * Return: 0 on ok execution and -1 in error
  */
 int main(int ac, char **av, char **env)
