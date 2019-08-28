@@ -6,7 +6,6 @@
  */
 void _exityj(char **line)
 {
-	int i = 0;
 	if (*line)
 		free(*line);
 	exit(98);

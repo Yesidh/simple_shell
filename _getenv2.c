@@ -7,7 +7,7 @@
 extern char** environ;
 void _getenv2(const char *name, char *stringpath)
 {
-    size_t i = 0, j = 0, k = 0;
+    size_t i = 0, j = 0;
     size_t lenghpath = 0;
     char **envloc = environ;
     while (envloc[i] != NULL)
