@@ -22,4 +22,6 @@ int _strlen(char *s);
 void tokenize2(char *stringtotokens, char **tokenspath, char *);
 int _getenv2(const char *name, char *stringpath, char **env);
 int _strncpy(char *dest, char *src);
+void mainaux(char *stringconcat, char **tokenspath, char *stringpath,
+	     char *commandstring, char **tokenscommand, char **env);
 #endif
