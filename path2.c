@@ -1,11 +1,14 @@
 #include "holberton.h"
-/**
+void mainaux(char *stringconcat, char **tokenspath,
+	      char *stringpath, char *commandstring,
+	      char **tokenscommand, char **env);
+ /**
  * main - simple shell project
  * @ac: arguments numbers
  * @av: pointer to arguments arrays
  * @env: environ variable
  * Return: 0 on ok execution and -1 in error
-*/
+ */
 int main(int ac, char **av, char **env)
 {
 	char *commandstring = NULL;
@@ -23,8 +26,7 @@ int main(int ac, char **av, char **env)
 		if (pid == -1)
 		{
 			perror("Error:");
-			exit(0);
-		}
+			exit(0); }
 		flag = 0;
 		commandstring = _getline();
 		tokenize2(commandstring, tokenscommand, " \n\t");
@@ -33,33 +35,45 @@ int main(int ac, char **av, char **env)
 			if ((_strcmp(tokenscommand[0], "env") == 0) && !tokenscommand[1])
 			{
 				_env(env);
-				flag = 1;
-			}
+				flag = 1; }
 			if ((_strcmp(tokenscommand[0], "exit") == 0) && !tokenscommand[1])
 			{
 				_exityj(&commandstring);
-				flag = 1;
-			}
+				flag = 1; }
 			if (flag != 1)
-			{
-				_getenv2("PATH", stringpath, env);
-				tokenize2(stringpath, tokenspath, ":\n\t");
-				if (tokenspath[0])
-				{
-					if (concatenatokens(tokenscommand, tokenspath, stringconcat) == 1)
-						worker(stringconcat, tokenscommand, commandstring, env);
-					else
-						write(STDIN_FILENO, "command not found", 17);
-				}
-			}
-		}
+				mainaux(stringconcat, tokenspath, stringpath,
+					commandstring, tokenscommand, env); }
 		else
 		{
 			if (tokenscommand[0])
-				worker(tokenscommand[0], tokenscommand, commandstring, env);
-		}
+				worker(tokenscommand[0], tokenscommand,
+				       commandstring, env); }
 		if (commandstring)
-		 	free(commandstring);
-	}
-	return (0);
+			free(commandstring); }
+	return (0); }
+/**
+ * mainaux - to comply with betty
+ *
+ * @stringconcat: string
+ * @tokenspath: string tokenized
+ * @stringpath: string of the path
+ * @commandstring: command together
+ * @tokenscommand: the command
+ * @env: env variable
+ *
+ * Return: nothing
+ */
+void mainaux(char *stringconcat, char **tokenspath, char *stringpath,
+	      char *commandstring, char **tokenscommand, char **env)
+{
+	_getenv2("PATH", stringpath, env);
+	tokenize2(stringpath, tokenspath, ":\n\t");
+	if (tokenspath[0])
+	{
+		if (concatenatokens(tokenscommand, tokenspath,
+				    stringconcat) == 1)
+			worker(stringconcat, tokenscommand,
+			       commandstring, env);
+		else
+			write(STDIN_FILENO, "command not found", 17); }
 }
