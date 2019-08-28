@@ -6,7 +6,7 @@
  *
  * Return: always 1
  */
-int worker(char *stringconcat, char **tokenscommand)
+int worker(char *stringconcat, char **tokenscommand, char *commandstring)
 {
 	pid_t pid, ppid, pidclosed, childpidstatus;
 
@@ -16,8 +16,18 @@ int worker(char *stringconcat, char **tokenscommand)
 		perror("fork failure\n");
 	if (pid == 0)
 	{
-		execve(stringconcat, tokenscommand, NULL);
-		exit(5);
+		if (execve(stringconcat, tokenscommand, NULL) == -1)
+		{
+			if (commandstring)
+				free(commandstring);
+			return (0);
+		}
+		else
+		{
+			write(STDIN_FILENO, "command not found", 17);
+			if (commandstring)
+				free(commandstring);
+		}
 	}
 	if (pid > 0)
 		pidclosed = wait(NULL);

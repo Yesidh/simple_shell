@@ -4,17 +4,10 @@
 	 *
  * Return: nothing
  */
-void _exityj(char **line, char **tokenscommand)
+void _exityj(char **line)
 {
 	int i = 0;
 	if (*line)
 		free(*line);
-	while(tokenscommand[i])
-	 {
-	 	free(tokenscommand[i]);
-	 	i++;
-	 }
-	if (tokenscommand)
-		free(tokenscommand);
 	exit(98);
 }

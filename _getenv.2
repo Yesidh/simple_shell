@@ -10,7 +10,7 @@ char *_getenv(const char *name)
 	size_t i = 0, j = 0, k = 0;
 	size_t lenghpath = 0;
 	extern char **environ;
-	char *route;
+	char *route = NULL;
 
 	while (environ[i] != NULL)
 	{

@@ -36,7 +36,8 @@ char *_getline(void)
 	{
 		if (res == EOF)
 		{
-			free(buf);
+			if (buf)
+				free(buf);
 			write(STDIN_FILENO, "\n", 1);
 			exit(98);
 		}
@@ -54,12 +55,13 @@ char *_getline(void)
 
 		if (res == EOF)
 		{
-			free(buf);
+			if (buf)
+				free(buf);
 			write(STDIN_FILENO, "\n", 1);
 			exit(98);
 		}
 	}
-
+	
 	if (res == EOF)
 	{
 		write(STDIN_FILENO, "\n", 1);

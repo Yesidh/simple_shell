@@ -11,10 +11,10 @@ char *concatenatokens(char **tokenscommand, char **tokenspath)
 	char *stringconcat = NULL;
 	struct stat st;
 
+
 	for (j = 0; tokenspath[j] != NULL; j++)
 	{
 		stringconcat = malloc(sizeof(char) * 120);
-
 		for (k = 0; tokenspath[j][k] != '\0'; k++)
 			stringconcat[k] = tokenspath[j][k];
 		stringconcat[k] = '/';
@@ -23,7 +23,7 @@ char *concatenatokens(char **tokenscommand, char **tokenspath)
 			stringconcat[k] = tokenscommand[0][l];
 		stringconcat[k] = '\0';
 		if (stat(stringconcat, &st) == 0)
-			return(stringconcat);
+			return (stringconcat);
 		free(stringconcat);
 	}
 	return(0);
