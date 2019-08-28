@@ -1,9 +1,9 @@
 #include "holberton.h"
 /**
- * tokenize - function to tokenizer an string
+ * tokenize2 - function to tokenizer an string
  * @stringtotokens: string for tokenizer
  * @delim: delimiters for tokenization
- *
+ * @tokenspath: where tokens of path will be save
  * Return: a pointer with the tokenization
  */
 void tokenize2(char *stringtotokens, char **tokenspath, char *delim)
