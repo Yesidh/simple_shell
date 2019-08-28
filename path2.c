@@ -8,8 +8,18 @@ int main (void)
 	char stringconcat[120];
 	/* size_t linesize = 0; */
 	int  flag = 0;
+	pid_t pid = 0;
 	while (1)
 	{
+		if (pid == -1)
+		{
+			perror("Error:");
+			exit(0);
+		}
+
+		if (isatty(STDIN_FILENO))
+			write(STDIN_FILENO, "$ ", 2);
+
 		flag = 0;
 		commandstring = _getline();
 		tokenize2(commandstring, tokenscommand, " \n");
