@@ -1,5 +1,12 @@
 #include "holberton.h"
-int main (int ac, char **av, char ** env)
+/**
+ * main - simple shell project
+ * @ac: arguments numbers
+ * @av: pointer to arguments arrays
+ * @env: environ variable
+ * Return: 0 on ok execution and -1 in error
+*/
+int main(int ac, char **av, char **env)
 {
 	char *commandstring = NULL;
 	char *tokenscommand[50] = { 0 };
@@ -39,7 +46,7 @@ int main (int ac, char **av, char ** env)
 				tokenize2(stringpath, tokenspath, ":\n\t");
 				if (tokenspath[0])
 				{
-					if(concatenatokens(tokenscommand, tokenspath, stringconcat) == 1)
+					if (concatenatokens(tokenscommand, tokenspath, stringconcat) == 1)
 						worker(stringconcat, tokenscommand, commandstring, env);
 					else
 						write(STDIN_FILENO, "command not found", 17);
@@ -51,7 +58,7 @@ int main (int ac, char **av, char ** env)
 			if (tokenscommand[0])
 				worker(tokenscommand[0], tokenscommand, commandstring, env);
 		}
-		 if (commandstring)
+		if (commandstring)
 		 	free(commandstring);
 	}
 	return (0);

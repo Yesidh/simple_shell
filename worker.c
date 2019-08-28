@@ -3,10 +3,12 @@
  * worker - funtion for execute a command
  * @stringconcat: command directory
  * @tokenscommand: arguments array command
- * @commandstring:
+ * @commandstring: strings of commands
+ * @env: environ double pointer variable
  * Return: always 1
  */
-int worker(char *stringconcat, char **tokenscommand, char *commandstring, char **env)
+int worker(char *stringconcat, char **tokenscommand, char *commandstring,
+	   char **env)
 {
 	pid_t pid;
 	size_t cont = 0;
