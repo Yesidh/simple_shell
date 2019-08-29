@@ -1,7 +1,12 @@
 #include "holberton.h"
 /**
- * _env - prints the environment variable in the stdout
+ * _env - prints the environment variable in the stdout.
+ * it takes the environment information from the third argument
+ * in the main function. It does not take the info from the extern variable
+ * called environ because Betty does not allow it, although is possible.
+ *
  * @env: environ variables
+ *
  * Return: nothing
  */
 void _env(char **env)
