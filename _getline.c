@@ -1,7 +1,10 @@
 #include "holberton.h"
 #include <termios.h>
 /**
- * _getline - custom implementation of getline
+ * _getline - is a wrapper to use the getline function but with some
+ * considerations. The first is that it traps the Ctr C keyboard to
+ * invalidate the common behaviour. In our shell the CTR C doesn't do
+ * anything special.'
  *
  * Return: -1 for ctr c, -2 for ctrd
  */
