@@ -86,15 +86,16 @@ V 0.0 for manual review
 | ------------------ | ---------------------------------------- |
 | Task 0 Mandatory   | Write a README, man page and Authors files |
 | Task 1 Mandatory   | Write a beautiful code that passes the Betty checks |
-| Task 2 Advanced    |  |
+| Task 2 Advanced    | Contribution for a test suite for the shell
+ https://github.com/luischaparroc/bog-0619_shell_test_suite/tree/yesidjhonatan |
 | Task 3 Mandatory   | Write a simple UNIX command line interpreter |
-| Task 4 Advanced    |  |
+| Task 4 Advanced    | Write your own getline function |
 | Task 5  Mandatory  | Handle command lines with arguments |
-| Task 6 Advanced    |  |
+| Task 6 Advanced    | Write your own strtok function |
 | Task 7 Mandatory   | Handle the PATH |
 | Task 8 Mandatory   | Implement exit built-in, that exit the shell |
-| Task 9 Advanced    |  |
-| Task 10 Advanced   |  |
+| Task 9 Advanced    | Make the built-in exit |
+| Task 10 Advanced   | Handle Ctrl +C |
 | Task 11 Mandatory  | Inplement the env built-in|
 | Task 12 Advanced   | Implemente the setenv and unsetenv |
 | Task 13 Advanced   | Implement the built-in command cd|
@@ -112,15 +113,18 @@ V 0.0 for manual review
 
 | File               | Description                              |
 | ------------------ | ---------------------------------------- |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
-|         |  |
+| AUTHORS            | File listing all individuals contributed |
+| README.md          | File with main description about the project |
+| man_simpleshell    | Man page for the simple shell |
+| concatenatokens.c  | Function to concatena two tokens made with strtok function|
+| _env.c             | Function to print en **env variable |
+| _getenv2.c         | Function to search of a PATH |
+| _getline.c         | Function to obtein a line from standar input |
+| holberton.h        | File with all prototypes |
+| path2.c            | Main program for the simple shell |
+| _sigint_handler.c  | Function for see flags aboust sigint |
+| _strcmp.c          | Funtion to copy one string into other string |
+| _strlen.c          | Function to calculate the lengh of a string |
+| _strncpy.c         | Function to copy n character into another string |
+| tokenize2.c        | Function for tokenizer an string |
+| worker.c           | Function for execute an array of commands and argumentss |
