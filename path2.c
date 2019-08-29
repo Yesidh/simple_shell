@@ -1,6 +1,9 @@
 #include "holberton.h"
 /**
- * main - simple shell project
+ * main - simple shell project. This in the entry point for the program. It is
+ * split into two functions in order to comply with betty standards. It has
+ * three arguments from the standard input but only use the third arguments
+ * which has the environment information.
  *
  * @ac: arguments numbers
  * @av: pointer to arguments arrays
