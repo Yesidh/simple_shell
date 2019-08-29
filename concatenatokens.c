@@ -1,9 +1,13 @@
 #include "holberton.h"
 /**
- * concatenatokens - function for concatenates two tokens
+ * concatenatokens - function for concatenates two tokens and add a slash
+ * This takes two tokens from a strtok operation and merge them to
+ * execute it with execve in another function.
+ *
  * @tokenscommand: pointer to command token
  * @tokenspath: pointer to tokens of the PATH
  * @stringconcat: pointer where concatenate string will be save
+ *
  * Return: a pointer to concatenate string
  */
 int concatenatokens(char **tokenscommand, char **tokenspath,
