@@ -86,7 +86,8 @@ V 0.0 for manual review
 | ------------------ | ---------------------------------------- |
 | Task 0 Mandatory   | Write a README, man page and Authors files |
 | Task 1 Mandatory   | Write a beautiful code that passes the Betty checks |
-| Task 2 Advanced    | Contribution for a test suite for the shell https://github.com/luischaparroc/bog-0619_shell_test_suite/tree/yesidjhonatan |
+| Task 2 Advanced    | Contribution for a test suite for the shell
+ https://github.com/luischaparroc/bog-0619_shell_test_suite/tree/yesidjhonatan |
 | Task 3 Mandatory   | Write a simple UNIX command line interpreter |
 | Task 4 Advanced    | Write your own getline function |
 | Task 5  Mandatory  | Handle command lines with arguments |
