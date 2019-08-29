@@ -1,9 +1,13 @@
 #include "holberton.h"
 /**
- * _getenv2 - search for enviroment variable
+ * _getenv2 - search for environment variable, and extract the PATH variable
+ * This PATH variable contains all the directories where the shell will be able
+ * to find a program to use as a child process the shell or as a built-in.
+ *
  * @name: variable name for search
  * @stringpath: where the path will be save
  * @env: pointer to an array for environ variable
+ *
  * Return: -1 on failure, 1 on ok and 0 on execution
  */
 int _getenv2(const char *name, char *stringpath, char **env)
